@@ -4,10 +4,10 @@ module.exports = {
     getAll: (req, res) => {
         Transaction.find()
             .then((data) => {
-                res.send(data);
+                res.json(data);
             })
             .catch(errors => {
-                res.send(errors);
+                res.json(errors);
             })
     },
     add: (req, res) => {

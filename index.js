@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
+// var cookieParser = require('cookie-parser')
 const port = process.env.PORT || 3000;
 
 const transactionRouter = require('./routes/transaction.route')
@@ -24,11 +24,10 @@ app.use(function (req, res, next) {
 
 // router here
 app.get('/', (req, res) => {
-    res.send('server OK');
+    res.send('Home page ');
 });
 
 app.use('/api/transactions',transactionRouter);
-
 
 
 // connection
