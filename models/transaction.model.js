@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 const transactionSchema = mongoose.Schema({
-    _userId: {
-        type: mongoose.Types.ObjectId,
-        require: true
-    },
     _balanceId: {
         type: mongoose.Types.ObjectId,
         require: true
@@ -20,12 +16,8 @@ const transactionSchema = mongoose.Schema({
         type: Date,
         require: true
     },
-    notes: {
-        type: String
-    },
-    createAt: {
-        type: Date
-    }
+    notes:  String,
+    createAt:  Date
 });
 
 

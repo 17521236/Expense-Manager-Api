@@ -5,6 +5,11 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
 
 const transactionRouter = require('./routes/transaction.route')
+const userRouter = require('./routes/user.route')
+const categoryRouter = require('./routes/category.route')
+const walletRouter = require('./routes/wallet.route')
+
+// const { login } = require('./middlewares/auth.middleware')
 
 // load mongodb
 const mongoose = require('./mongoose');
@@ -13,6 +18,7 @@ const mongoose = require('./mongoose');
 // app.use(cookieParser('ajskvhbjklksgahjklkaschjhkj46513sachjbknlm'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 // enable CORS
 app.use(function (req, res, next) {
@@ -27,7 +33,11 @@ app.get('/', (req, res) => {
     res.send('Home page ');
 });
 
-app.use('/api/transactions',transactionRouter);
+app.use('/api/transactions', transactionRouter);
+app.use('/api/users', userRouter);
+app.use('/api/categories', categoryRouter);
+app.use('/api/wallets', walletRouter);
+
 
 
 // connection

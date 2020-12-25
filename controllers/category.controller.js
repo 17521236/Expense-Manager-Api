@@ -1,8 +1,8 @@
-const Transaction = require('../models/transaction.model')
+const Category = require('../models/category.model')
 
 module.exports = {
     getAll: (req, res) => {
-        Transaction.find()
+        Category.find()
             .then((data) => {
                 res.json(data);
             })
@@ -11,13 +11,9 @@ module.exports = {
             })
     },
     add: (req, res) => {
-        Transaction.create({
-            _balanceId: req.body._balanceId,
-            amount: req.body.amount,
-            _categoryId: req.body._categoryId,
-            time: req.body.time,
-            notes: req.body.notes,
-            // imageUrl: req.body.imageUrl,
+        Category.create({
+            name: req.body.name,
+            type: req.body.type,
             createAt: new Date()
         }).then(data => {
             res.send({
@@ -30,9 +26,9 @@ module.exports = {
                 errors
             })
         })
-    },
+    }    ,
     getOne: (req, res) => {
-        Transaction.findOne({ _id: req.params.id })
+        Category.findOne({ _id: req.params.id })
             .then(data => {
                 res.send({
                     result: '1',
@@ -46,7 +42,7 @@ module.exports = {
             })
     },
     update: (req, res) => {
-        Transaction.findOneAndUpdate({ _id: req.params.id }, {
+        Category.findOneAndUpdate({ _id: req.params.id }, {
             $set: req.body
         })
             .then(data => {
@@ -62,7 +58,7 @@ module.exports = {
             })
     },
     delete: (req, res) => {
-        Transaction.findOneAndDelete({ _id: req.params.id })
+        Category.findOneAndDelete({ _id: req.params.id })
             .then(data => {
                 res.send({
                     result: '1',
@@ -76,7 +72,7 @@ module.exports = {
             })
     },
     deleteAll: (req, res) => {
-        Transaction.deleteMany()
+        Category.deleteMany()
             .then(data => {
                 res.send({
                     result: '1',
